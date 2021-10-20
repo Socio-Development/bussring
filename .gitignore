@@ -1,0 +1,6 @@
+.DS_Store
+/.svelte-kit
+/build
+/package
+node_modules
+package-lock.json
