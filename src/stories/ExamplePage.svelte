@@ -1,5 +1,5 @@
 <script>
-  import './page.css';
+  import './example-page.css';
   import Header from './Header.svelte';
 
   import { createEventDispatcher } from 'svelte';
