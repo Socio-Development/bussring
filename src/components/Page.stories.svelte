@@ -25,7 +25,7 @@
 </Template>
 
 <Story
-  name="TromsoLufthavn"
+  name="Default"
   args={{
     location: 'Tromsø Lufthavn',
     title: 'Tromsø Lufthavn'
