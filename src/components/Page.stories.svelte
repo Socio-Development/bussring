@@ -1,5 +1,5 @@
 <script>
-  import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
+  import { Meta, Story } from '@storybook/addon-svelte-csf'
   import Page from './Page.svelte'
 </script>
 
@@ -8,30 +8,20 @@
   component={Page}
 />
 
-<Template let:args>
+<Story name="Airport">
   <Page
-    location= "Scandic Ishavshotel"
+    location="Tromsø Lufthavn"
+    resultLimit={ 8 }
+    stopPlaceId={ 52281 }
+    title="Tromsø Lufthavn"
+  />
+</Story>
+
+<Story name="Scandic">
+  <Page
+    location="Scandic Ishavshotel"
     resultLimit={ 8 }
     stopPlaceId={ 52806 }
     title="Scandic Ishavshotel"
   />
-</Template>
-
-<Story
-  name="ScandicIshavshotel"
-/>
-
-<!-- <Story
-  name="TromsoLufthavn"
-  args={{
-    location: 'Tromsø Lufthavn',
-    resultLimit: 8,
-    stopPlaceId: 52281,
-    tableHeadings: [
-      'Avgang',
-      'Destinasjon',
-      'Forlater om'
-    ],
-    title: 'Tromsø Lufthavn'
-  }}
-/> -->
+</Story>

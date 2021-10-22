@@ -96,7 +96,7 @@
   }
   th {
     border-bottom: 1px solid #fff;
-    font-size: 2rem;
+    font-size: 1.6rem;
     text-align: left;
   }
   tr:nth-child(even) {
