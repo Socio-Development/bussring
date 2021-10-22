@@ -4,6 +4,12 @@
   export let resultLimit: number
   export let stopPlaceId: number
 
+  /**
+   * TODO:
+   * - Make sure to codesplit this file
+   * - Start interval on mount to update countdown
+   *   - See (https://svelte.dev/repl/clock?version=3.38.2)
+   */
   function fetchFromAPI() {
     const query = `{
       stopPlace(id: "NSR:StopPlace:${ stopPlaceId }") {
@@ -26,7 +32,6 @@
     return fetch('https://api.entur.io/journey-planner/v2/graphql', {
       method: 'POST',
       headers: {
-          // Replace this with your own client name:
           'ET-Client-Name': 'bussring-digital-signage',
           'Content-Type': 'application/json'
       },
