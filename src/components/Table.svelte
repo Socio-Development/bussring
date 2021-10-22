@@ -1,13 +1,7 @@
 <script lang="ts">
-  interface TableBody {
-    time: string,
-    dest: string
-  }
-  interface TableData {
-    headings: string[],
-    body: TableBody[]
-  }
-  export let tableData: TableData
+  import type { ITableData } from '../types/interfaces'
+
+  export let tableData: ITableData
 </script>
 
 <table>
@@ -21,8 +15,8 @@
   <tbody>
     {#each tableData.body as body}
       <tr>
-        <td>{ body.time }</td>
-        <td>{ body.dest }</td>
+        <td>{ body.expectedDepartureTime.toLocaleTimeString() }</td>
+        <td>{ body.destinationDisplay.frontText }</td>
       </tr>
     {/each}
   </tbody>

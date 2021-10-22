@@ -1,8 +1,10 @@
 <script lang="ts">
+  import type { ITableData } from 'src/types/interfaces'
   import Table from './Table.svelte'
 
   export let location: string
   export let title: string
+  export let tableData: ITableData
 </script>
 
 <svelte:head>
@@ -13,23 +15,7 @@
   <h3>Departure</h3>
   <h1>{ location }</h1>
   
-  <Table
-    tableData={{
-      headings: [
-        'Avgang',
-        'Destinasjon'
-      ],
-      body: [
-        { time: '12:05', dest: 'Tromsø lufthavn' },
-        { time: '13:25', dest: 'Tromsø lufthavn' },
-        { time: '14:45', dest: 'Tromsø lufthavn' },
-        { time: '16:00', dest: 'Tromsø lufthavn' },
-        { time: '16:50', dest: 'Tromsø lufthavn' },
-        { time: '17:10', dest: 'Tromsø lufthavn' },
-        { time: '18:30', dest: 'Tromsø lufthavn' },
-      ]
-    }}
-  />
+  <Table {tableData} />
 </div>
 
 <style>
