@@ -9,6 +9,7 @@
    * - Make sure to codesplit this file
    * - Start interval on mount to update countdown
    *   - See (https://svelte.dev/repl/clock?version=3.38.2)
+   * - Add placeholder loading effect
    */
   function fetchFromAPI() {
     const query = `{
