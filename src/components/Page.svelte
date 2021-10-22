@@ -4,7 +4,6 @@
   export let location: string
   export let resultLimit: number
   export let stopPlaceId: number
-  export let tableHeadings: string[]
   export let title: string
 </script>
 
@@ -19,7 +18,6 @@
   <Table
     {resultLimit}
     {stopPlaceId}
-    {tableHeadings}
   />
 </div>
 

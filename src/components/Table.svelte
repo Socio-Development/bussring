@@ -3,7 +3,6 @@
 
   export let resultLimit: number
   export let stopPlaceId: number
-  export let tableHeadings: string[] = []
 
   function fetchFromAPI() {
     const query = `{
@@ -70,9 +69,9 @@
   <table>
     <thead>
       <tr>
-        {#each tableHeadings as heading}
-          <th>{ heading }</th>
-        {/each}
+        <th>Avgang</th>
+        <th>Destinasjon</th>
+        <th>Nedtelling</th>
       </tr>
     </thead>
     <tbody>

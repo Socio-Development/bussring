@@ -13,11 +13,6 @@
     location= "Scandic Ishavshotel"
     resultLimit={ 8 }
     stopPlaceId={ 52806 }
-    tableHeadings={[
-      'Avgang',
-      'Destinasjon',
-      'Forlater om'
-    ]}
     title="Scandic Ishavshotel"
   />
 </Template>

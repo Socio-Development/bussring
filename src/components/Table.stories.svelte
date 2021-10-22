@@ -15,10 +15,5 @@
   <Table
     resultLimit={ 8 }
     stopPlaceId={ 52281 }
-    tableHeadings={[
-      'Avgang',
-      'Destinasjon',
-      'Forlater om'
-    ]}
   />
 </Story>
