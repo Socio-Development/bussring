@@ -1,5 +1,21 @@
+export interface IAPIQuery {
+  data: {
+    stopPlace: {
+      name: string
+      id: string
+      estimatedCalls: IEstimatedCalls[]
+    }
+  }
+}
+
 export interface IDeparture {
-  expectedDepartureTime: Date
+  departureTime: Date
+  destination: string
+  line: string
+}
+
+export interface IEstimatedCalls {
+  expectedDepartureTime: string
   destinationDisplay: {
     frontText: string
   }
@@ -13,7 +29,7 @@ export interface IDeparture {
 export interface IStopPlace {
   name: string
   id: string
-  estimatedCalls: IDeparture[]
+  estimatedCalls: IEstimatedCalls[]
 }
 
 export interface ITableData {
