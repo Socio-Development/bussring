@@ -7,25 +7,10 @@
     headings: string[],
     body: TableBody[]
   }
-  export let tableData: TableData = {
-    headings: [
-      'Departure',
-      'Destination'
-    ],
-    body: [
-      {
-        time: '14:48',
-        dest: 'Tromsø Lufthavn'
-      },
-      {
-        time: '13:37',
-        dest: 'Radisson Blu'
-      }
-    ]
-  }
+  export let tableData: TableData
 </script>
 
-<table class="border">
+<table>
   <thead>
     <tr>
       {#each tableData.headings as data}
@@ -59,5 +44,11 @@
   td,
   th {
     padding: .6rem 1rem;
+  }
+  td:first-child,
+  th:first-child {
+    text-align: center;
+    white-space: nowrap;
+    width: 0.1%;
   }
 </style>

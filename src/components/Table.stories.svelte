@@ -1,8 +1,7 @@
 <script lang="ts">
   import {
     Meta,
-    Story,
-    Template
+    Story
   } from '@storybook/addon-svelte-csf'
   import Table from './Table.svelte'
 </script>
@@ -12,12 +11,17 @@
   component={Table}
 />
 
-<Template let:args>
+<Story name="Default">
   <Table
-    {...args}
+    tableData={{
+      headings: [
+        'Avgang',
+        'Destinasjon'
+      ],
+      body: [
+        { time: '08:00', dest: 'Nordkjosbotten' },
+        { time: '08:20', dest: 'Simavika' },
+      ]
+    }}
   />
-</Template>
-
-<Story
-  name="Default"
-/>
+</Story>
