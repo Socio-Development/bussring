@@ -1,4 +1,5 @@
 .DS_Store
+*.rest
 /.svelte-kit
 /build
 /package
