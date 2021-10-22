@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Table from './Table.svelte'
+
   export let location: string
   export let title: string
 </script>
@@ -7,45 +9,39 @@
   <title>{ title }</title>
 </svelte:head>
 
-<h3>Departure</h3>
-<h1>{ location }</h1>
-
-<table>
-  <thead>
-    <tr class="underline">
-      <th>Departure</th>
-      <th>Destination</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>13:37</td>
-      <td>Scandic Ishavshotel</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <h3>Departure</h3>
+  <h1>{ location }</h1>
+  
+  <Table
+    tableData={{
+      headings: [
+        'Avgang',
+        'Destinasjon'
+      ],
+      body: [
+        { time: '12:05', dest: 'Tromsø lufthavn' },
+        { time: '13:25', dest: 'Tromsø lufthavn' },
+        { time: '14:45', dest: 'Tromsø lufthavn' },
+        { time: '16:00', dest: 'Tromsø lufthavn' },
+        { time: '16:50', dest: 'Tromsø lufthavn' },
+        { time: '17:10', dest: 'Tromsø lufthavn' },
+        { time: '18:30', dest: 'Tromsø lufthavn' },
+      ]
+    }}
+  />
+</div>
 
 <style>
+  .container {
+    padding: 2rem;
+  }
   h1 {
     font-size: 3.2rem;
     margin-top: 0;
   }
   h3 {
     color: rgba(255, 255, 255, .8);
-    margin-bottom: 0;
-  }
-  table {
-    margin: 3rem auto;
-  }
-  th {
-    border-bottom: 1px solid #fff;
-    font-size: 2rem;
-  }
-  td,
-  th {
-    padding: .6rem 1rem;
-  }
-  .underline {
-    border: 1px solid #fff;
+    margin: 0;
   }
 </style>

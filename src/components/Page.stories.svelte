@@ -27,7 +27,7 @@
 <Story
   name="Default"
   args={{
-    location: 'Tromsø Lufthavn',
-    title: 'Tromsø Lufthavn'
+    location: 'Scandic Ishavshotel',
+    title: 'Scandic Ishavshotel'
   }}
 />
