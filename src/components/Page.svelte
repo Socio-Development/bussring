@@ -1,10 +1,11 @@
 <script lang="ts">
-  import type { ITableData } from 'src/types/interfaces'
+  import type { IAPIQuery } from '../types/interfaces'
   import Table from './Table.svelte'
 
   export let location: string
+  export let stopPlaceData: IAPIQuery
+  export let tableHeadings: string[] = []
   export let title: string
-  export let tableData: ITableData
 </script>
 
 <svelte:head>
@@ -15,7 +16,10 @@
   <h3>Departure</h3>
   <h1>{ location }</h1>
   
-  <Table {tableData} />
+  <Table
+    {stopPlaceData}
+    {tableHeadings}
+  />
 </div>
 
 <style>

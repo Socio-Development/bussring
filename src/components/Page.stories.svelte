@@ -1,5 +1,6 @@
 <script>
   import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
+  import { Flyplassen, Scandic } from '../data/locations'
   import Page from './Page.svelte'
 </script>
 
@@ -25,72 +26,29 @@
 </Template>
 
 <Story
-  name="Default"
+  name="ScandicIshavshotel"
   args={{
     location: 'Scandic Ishavshotel',
     title: 'Scandic Ishavshotel',
-    tableData: {
-      headings: [
-        'Avgang',
-        'Destinasjon'
-      ],
-      body: [
-        {
-          expectedDepartureTime: new Date("2021-10-22T16:25:00+0200"),
-          destinationDisplay: {
-            frontText: "Tromsø lufthavn"
-          },
-          serviceJourney: {
-            line: {
-              publicCode: "FB92"
-            }
-          }
-        },
-        {
-          expectedDepartureTime: new Date("2021-10-22T17:10:00+0200"),
-          destinationDisplay: {
-            frontText: "Tromsø lufthavn"
-          },
-          serviceJourney: {
-            line: {
-              publicCode: "FB92"
-            }
-          }
-        },
-        {
-          expectedDepartureTime: new Date("2021-10-22T18:05:00+0200"),
-          destinationDisplay: {
-            frontText: "Tromsø lufthavn"
-          },
-          serviceJourney: {
-            line: {
-              publicCode: "FB92"
-            }
-          }
-        },
-        {
-          expectedDepartureTime: new Date("2021-10-22T19:00:00+0200"),
-          destinationDisplay: {
-            frontText: "Tromsø lufthavn"
-          },
-          serviceJourney: {
-            line: {
-              publicCode: "FB92"
-            }
-          }
-        },
-        {
-          expectedDepartureTime: new Date("2021-10-23T07:00:00+0200"),
-          destinationDisplay: {
-            frontText: "Tromsø lufthavn"
-          },
-          serviceJourney: {
-            line: {
-              publicCode: "FB92"
-            }
-          }
-        },
-      ]
-    }
+    stopPlaceData: Scandic,
+    tableHeadings: [
+      'Avgang',
+      'Destinasjon',
+      'Forlater om'
+    ]
+  }}
+/>
+
+<Story
+  name="TromsoLufthavn"
+  args={{
+    location: 'Tromsø Lufthavn',
+    title: 'Tromsø Lufthavn',
+    stopPlaceData: Flyplassen,
+    tableHeadings: [
+      'Avgang',
+      'Destinasjon',
+      'Forlater om'
+    ]
   }}
 />
