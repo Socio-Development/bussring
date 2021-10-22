@@ -4,7 +4,6 @@
     Story
   } from '@storybook/addon-svelte-csf'
   import Table from './Table.svelte'
-  import { Scandic } from '../data/locations'
 </script>
 
 <Meta
@@ -14,11 +13,12 @@
 
 <Story name="Default">
   <Table
+    resultLimit={ 8 }
+    stopPlaceId={ 52281 }
     tableHeadings={[
       'Avgang',
       'Destinasjon',
       'Forlater om'
     ]}
-    stopPlaceData={ Scandic }
   />
 </Story>

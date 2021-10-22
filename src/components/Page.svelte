@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type { IAPIQuery } from '../types/interfaces'
   import Table from './Table.svelte'
 
   export let location: string
-  export let stopPlaceData: IAPIQuery
-  export let tableHeadings: string[] = []
+  export let resultLimit: number
+  export let stopPlaceId: number
+  export let tableHeadings: string[]
   export let title: string
 </script>
 
@@ -17,7 +17,8 @@
   <h1>{ location }</h1>
   
   <Table
-    {stopPlaceData}
+    {resultLimit}
+    {stopPlaceId}
     {tableHeadings}
   />
 </div>
