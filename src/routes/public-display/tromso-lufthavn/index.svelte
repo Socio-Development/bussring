@@ -1,5 +1,9 @@
-<svelte:head>
-  <title>Trosmo Lufthavn</title>
-</svelte:head>
+<script lang="ts">
+  import Page from "../../../components/Page.svelte";
+</script>
 
-<h1>Tromsø Lufthavn</h1>
+<Page
+  location="Tromsø Lufthavn"
+  stopPlaceId={ 52281 }
+  resultLimit={ 8 }
+/>
