@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { getApiData, getDepartureList } from '../utils'
   import Table from './Table.svelte'
 
   export let location: string
@@ -10,20 +11,16 @@
   <title>{ location }</title>
 </svelte:head>
 
-<div class="container">
-  <h3>Departure</h3>
-  <h1>{ location }</h1>
-  
-  <Table
-    {resultLimit}
-    {stopPlaceId}
-  />
-</div>
+<h3>Lokasjon</h3>
+<h1>{ location }</h1>
+
+{#await getApiData(stopPlaceId, resultLimit)}
+  <p>Loading...</p>
+{:then jsonData}
+  <Table departureList={ getDepartureList(jsonData) } />
+{/await}
 
 <style>
-  .container {
-    padding: 2rem;
-  }
   h1 {
     font-size: 3.2rem;
     margin-top: 0;

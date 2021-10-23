@@ -1,10 +1,10 @@
-import type { IAPIQuery } from 'src/types/interfaces'
+import type { IApiData } from 'src/types/interfaces'
 
 /**
  * Location: Scandic Ishavshotel
  * id: "NSR:StopPlace:52806"
  */
-export const Scandic: IAPIQuery = {
+export const Scandic: IApiData = {
   "data": {
     "stopPlace": {
       "name": "Scandic Ishavshotel",
@@ -96,7 +96,7 @@ export const Scandic: IAPIQuery = {
  * Location: Tromsø Lufthavn
  * id: "NSR:StopPlace:52281"
  */
-export const Flyplassen: IAPIQuery = {
+export const Flyplassen: IApiData = {
   "data": {
     "stopPlace": {
       "name": "Tromsø lufthavn",

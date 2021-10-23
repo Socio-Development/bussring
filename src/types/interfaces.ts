@@ -1,4 +1,4 @@
-export interface IAPIQuery {
+export interface IApiData {
   data: {
     stopPlace: {
       name: string
