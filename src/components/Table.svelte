@@ -39,7 +39,9 @@
       body: JSON.stringify({ query }),
     })
       .then(res => res.json())
-      .then(stopPlaceData => parseAPI(stopPlaceData))
+      .then(stopPlaceData => {
+        return parseAPI(stopPlaceData)
+      })
   }
 
   /**
@@ -47,7 +49,8 @@
    * @param time Date
    */
   function countdownMinutes(time: Date) {
-    return Math.round((time.getTime() - Date.now()) / 60000)
+    const minutesLeft = (time.getTime() - Date.now()) / 60000
+    return Math.round(minutesLeft)
   }
 
   /**
@@ -70,6 +73,7 @@
       const hours = Math.floor(minutes / 60)
       return hours + ' t ' + (minutes % 60) + ' min'
     }
+    return '24+ t'
   }
 </script>
 
@@ -91,7 +95,7 @@
           <tr>
             <td>{ body.departureTime.toLocaleTimeString('nb-NO', { hour: '2-digit', minute: '2-digit' }) }</td>
             <td>{ body.destination }</td>
-              <td><strong>{ displayCountdown(body.departureTime) }</strong></td>
+            <td><strong>{ displayCountdown(body.departureTime) }</strong></td>
           </tr>
         {/if}
       {/each}
