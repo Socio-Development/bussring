@@ -49,7 +49,7 @@
     <tr>
       <th>Avgang</th>
       <th>Destinasjon</th>
-      <th>Nedtelling</th>
+      <th>Går om</th>
     </tr>
   </thead>
   <tbody>

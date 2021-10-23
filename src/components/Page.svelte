@@ -1,26 +1,29 @@
 <script lang="ts">
-  import { getApiData, getDepartureList } from '../utils'
+  import type { IDeparture } from '../types/interfaces'
   import Table from './Table.svelte'
 
-  export let location: string
-  export let resultLimit: number
-  export let stopPlaceId: number
+  export let departureList: IDeparture[]
+  export let locationName: string
+  export let showLocationName: boolean = false
 </script>
 
 <svelte:head>
-  <title>{ location }</title>
+  <title>{ locationName }</title>
 </svelte:head>
 
-<h3>Lokasjon</h3>
-<h1>{ location }</h1>
+<div class="container">
+  {#if showLocationName}
+    <h3>Holdeplass</h3>
+    <h1>{ locationName }</h1>
+  {/if}
 
-{#await getApiData(stopPlaceId, resultLimit)}
-  <p>Loading...</p>
-{:then jsonData}
-  <Table departureList={ getDepartureList(jsonData) } />
-{/await}
+  <Table {departureList} />
+</div>
 
 <style>
+  .container {
+    padding: 2rem;
+  }
   h1 {
     font-size: 3.2rem;
     margin-top: 0;

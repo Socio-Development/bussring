@@ -9,7 +9,7 @@
       props: {
         id: page.params.id,
         limit: page.query.get('limit'),
-        showName: page.query.get('showName')
+        showLocationName: page.query.get('showLocationName')
       }
     }
   }
@@ -17,7 +17,7 @@
 
 <script lang="ts">
   import { getApiData, getDepartureList, getLocationName } from '../../utils'
-  import Table from '../../components/Table.svelte'
+  import Page from '../../components/Page.svelte'
 
   /**
    * The NSR id of the bus stop
@@ -30,7 +30,7 @@
   /**
    * Do you wish to display the location name?
   */
-  export let showName: boolean = false
+  export let showLocationName: boolean = false
 
 
 </script>
@@ -38,15 +38,9 @@
 {#await getApiData(id, limit)}
   <p>Loading...</p>
 {:then jsonData}
-  {#if showName}
-    <h1>{ getLocationName(jsonData) }</h1>
-  {/if}
-  <Table departureList={ getDepartureList(jsonData) } />
+  <Page
+    departureList={ getDepartureList(jsonData) }
+    locationName={ getLocationName(jsonData) }
+    {showLocationName}
+  />
 {/await}
-
-<style>
-  h1 {
-    font-size: 3.2rem;
-    margin-top: 0;
-  }
-</style>
