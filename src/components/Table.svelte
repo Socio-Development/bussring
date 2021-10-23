@@ -57,6 +57,10 @@
   function displayCountdown(time: Date) {
     const minutes = countdownMinutes(time)
 
+    // Display "Leaving soon" notification
+    if (minutes < 6) {
+      return 'Under 5 min'
+    }
     // Exclude hours
     if (minutes < 60) {
       return minutes + ' min'
