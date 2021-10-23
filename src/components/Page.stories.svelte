@@ -13,7 +13,6 @@
     location="Tromsø Lufthavn"
     resultLimit={ 8 }
     stopPlaceId={ 52281 }
-    title="Tromsø Lufthavn"
   />
 </Story>
 
@@ -22,6 +21,5 @@
     location="Scandic Ishavshotel"
     resultLimit={ 8 }
     stopPlaceId={ 52806 }
-    title="Scandic Ishavshotel"
   />
 </Story>

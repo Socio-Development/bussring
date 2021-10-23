@@ -4,11 +4,10 @@
   export let location: string
   export let resultLimit: number
   export let stopPlaceId: number
-  export let title: string
 </script>
 
 <svelte:head>
-  <title>{ title }</title>
+  <title>{ location }</title>
 </svelte:head>
 
 <div class="container">
