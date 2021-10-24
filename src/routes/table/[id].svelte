@@ -26,16 +26,14 @@
   /**
    * The limit of rows to display (max 7)
    */
-  export let limit: number = 7
+  export let limit: number
   /**
    * Do you wish to display the location name?
   */
   export let showLocationName: boolean = false
-
-
 </script>
 
-{#await getApiData(id, limit)}
+{#await getApiData(id, limit || 7)}
   <p>Loading...</p>
 {:then jsonData}
   <Page

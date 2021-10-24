@@ -1,6 +1,6 @@
 import type { IApiData, IDeparture } from './types/interfaces'
 
-export function getApiData(stopPlaceId: number, resultLimit: number) {
+export async function getApiData(stopPlaceId: number, resultLimit?: number) {
   const query = `{
     stopPlace(id: "NSR:StopPlace:${ stopPlaceId }") {
       name
@@ -19,7 +19,7 @@ export function getApiData(stopPlaceId: number, resultLimit: number) {
     }
   }`
 
-  return fetch('https://api.entur.io/journey-planner/v2/graphql', {
+  return await fetch('https://api.entur.io/journey-planner/v2/graphql', {
     method: 'POST',
     headers: {
         'ET-Client-Name': 'bussring-digital-signage',
@@ -28,7 +28,9 @@ export function getApiData(stopPlaceId: number, resultLimit: number) {
     body: JSON.stringify({ query }),
   })
     .then(res => res.json())
-    .then(stopPlaceData => stopPlaceData)
+    .then(stopPlaceData => {
+      return stopPlaceData
+    })
 }
 
 export function getDepartureList({ data }: IApiData) {
