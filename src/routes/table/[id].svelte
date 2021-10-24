@@ -45,7 +45,7 @@
 
 <div
   class="container"
-  style={ background && `background: ${ background };` }
+  style={ `background: ${background || '#8A2A2B'};` }
 >
   {#await getApiData(id, limit || 7)}
     <p>Loading...</p>
@@ -60,7 +60,6 @@
 
 <style>
   .container {
-    background: #8A2A2B;
     height: 100vh;
     padding: 2rem;
   }
