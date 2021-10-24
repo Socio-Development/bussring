@@ -22,6 +22,12 @@
   import Page from '../../components/Page.svelte'
 
   /**
+   * EXAMPLE ID's
+   * Scandic Ishavshotel: 52806
+   * Tromsø Lufthavn: 52281
+   */
+
+  /**
    * Override the background color
    * @path /<id-number>?background=<hex-color>
    */
@@ -68,6 +74,7 @@
   .container {
     color: var(--color);
     height: 100vh;
+    overflow-y: scroll;
     padding: 2rem;
   }
   @media (max-width: 650px) {

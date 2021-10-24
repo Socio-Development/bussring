@@ -27,6 +27,7 @@
   }
   h3 {
     color: var(--color);
+    font-size: 1.2rem;
     margin: 0;
     opacity: .8;
   }
