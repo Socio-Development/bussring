@@ -23,7 +23,7 @@ export async function getApiData(stopPlaceId: number, resultLimit?: number) {
   return await fetch('https://api.entur.io/journey-planner/v2/graphql', {
     method: 'POST',
     headers: {
-        'ET-Client-Name': 'bussring-digital-signage',
+        'ET-Client-Name': 'bussring-digital_signage',
         'Content-Type': 'application/json'
     },
     body: JSON.stringify({ query }),
