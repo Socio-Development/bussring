@@ -7,6 +7,7 @@
   }) {
     return {
       props: {
+        background: page.query.get('background'),
         id: page.params.id,
         limit: page.query.get('limit'),
         showLocationName: page.query.get('showLocationName')
@@ -20,25 +21,52 @@
   import Page from '../../components/Page.svelte'
 
   /**
+   * Override the background color
+   * @path /<id-number>?background=<hex-color>
+   */
+  export let background: string
+  /**
    * The NSR id of the bus stop
+   * @path /<id-number>
    */
   export let id: number
   /**
    * The limit of rows to display (max 7)
+   * @path /<id-number>?limit=<number>
    */
   export let limit: number
   /**
    * Do you wish to display the location name?
+   * @path /<id-number>?showLocationName=<boolean>
+   * @default true
   */
   export let showLocationName: string
 </script>
 
-{#await getApiData(id, limit || 7)}
-  <p>Loading...</p>
-{:then jsonData}
-  <Page
-    departureList={ getDepartureList(jsonData) }
-    locationName={ getLocationName(jsonData) }
-    {showLocationName}
-  />
-{/await}
+<div
+  class="container"
+  style={ background && `background: ${ background };` }
+>
+  {#await getApiData(id, limit || 7)}
+    <p>Loading...</p>
+  {:then jsonData}
+    <Page
+      departureList={ getDepartureList(jsonData) }
+      locationName={ getLocationName(jsonData) }
+      {showLocationName}
+    />
+  {/await}
+</div>
+
+<style>
+  .container {
+    background: #8A2A2B;
+    height: 100vh;
+    padding: 2rem;
+  }
+  @media (max-width: 650px) {
+    .container {
+      padding: 16px;
+    }
+  }
+</style>
