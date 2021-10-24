@@ -11,7 +11,7 @@
   <title>{ locationName }</title>
 </svelte:head>
 
-<div class="container">
+<div>
   {#if (showLocationName !== 'false')}
     <h3>Holdeplass</h3>
     <h1>{ locationName }</h1>
@@ -21,9 +21,6 @@
 </div>
 
 <style>
-  .container {
-    padding: 2rem;
-  }
   h1 {
     font-size: 3.2rem;
     margin-top: 0;
@@ -31,5 +28,13 @@
   h3 {
     color: rgba(255, 255, 255, .8);
     margin: 0;
+  }
+  @media (max-width: 650px) {
+    h1 {
+      font-size: 2rem;
+    }
+    h3 {
+      font-size: 1rem;
+    }
   }
 </style>

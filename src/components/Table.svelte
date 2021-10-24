@@ -93,4 +93,18 @@
     white-space: nowrap;
     width: 0.1%;
   }
+  td:last-child,
+  th:last-child {
+    white-space: nowrap;
+    width: 0.1%;
+  }
+  @media (max-width: 650px) {
+    th {
+      font-size: .8rem;
+    }
+    td,
+    th {
+      padding: .6rem .4rem;
+    }
+  }
 </style>
