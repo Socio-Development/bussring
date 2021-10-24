@@ -4,7 +4,7 @@
 
   export let departureList: IDeparture[]
   export let locationName: string
-  export let showLocationName: boolean = false
+  export let showLocationName: string
 </script>
 
 <svelte:head>
@@ -12,7 +12,7 @@
 </svelte:head>
 
 <div class="container">
-  {#if showLocationName}
+  {#if (showLocationName !== 'false')}
     <h3>Holdeplass</h3>
     <h1>{ locationName }</h1>
   {/if}

@@ -30,7 +30,7 @@
   /**
    * Do you wish to display the location name?
   */
-  export let showLocationName: boolean = false
+  export let showLocationName: string
 </script>
 
 {#await getApiData(id, limit || 7)}
