@@ -8,6 +8,7 @@
     return {
       props: {
         background: page.query.get('background'),
+        color: page.query.get('color'),
         id: page.params.id,
         limit: page.query.get('limit'),
         showLocationName: page.query.get('showLocationName')
@@ -25,6 +26,11 @@
    * @path /<id-number>?background=<hex-color>
    */
   export let background: string
+  /**
+   * Override the text color
+   * @path /<id-number>?color=<hex-color>
+   */
+  export let color: string
   /**
    * The NSR id of the bus stop
    * @path /<id-number>
@@ -45,7 +51,7 @@
 
 <div
   class="container"
-  style={ `background: ${background || '#8A2A2B'};` }
+  style={ `background: ${background || '#8A2A2B'}; --color: ${ color || '#fff' };` }
 >
   {#await getApiData(id, limit || 7)}
     <p>Loading...</p>
@@ -60,6 +66,7 @@
 
 <style>
   .container {
+    color: var(--color);
     height: 100vh;
     padding: 2rem;
   }

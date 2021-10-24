@@ -26,8 +26,9 @@
     margin-top: 0;
   }
   h3 {
-    color: rgba(255, 255, 255, .8);
+    color: var(--color);
     margin: 0;
+    opacity: .8;
   }
   @media (max-width: 650px) {
     h1 {

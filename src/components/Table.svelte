@@ -74,7 +74,7 @@
     width: 100%;
   }
   th {
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid var(--color);
     font-size: 1.6rem;
     text-align: left;
   }
