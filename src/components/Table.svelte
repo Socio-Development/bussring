@@ -48,7 +48,7 @@
   <thead>
     <tr>
       <th>Avgang</th>
-      <th>Rute</th>
+      <th colspan="2">Rute</th>
       <th>Destinasjon</th>
       <th>Går om</th>
     </tr>
@@ -59,6 +59,7 @@
       {#if countdownMinutes(departure.departureTime) > 0}
         <tr>
           <td>{ departure.departureTime.toLocaleTimeString('nb-NO', { hour: '2-digit', minute: '2-digit' }) }</td>
+          <td>{ departure.transport }</td>
           <td>{ departure.line }</td>
           <td>{ departure.destination }</td>
           <td><strong>{ displayCountdown(departure.departureTime) }</strong></td>
@@ -88,7 +89,8 @@
   td:first-child,
   th:first-child,
   th:nth-child(2),
-  td:nth-child(2) {
+  td:nth-child(2),
+  td:nth-child(3) {
     text-align: center;
     white-space: nowrap;
     width: 0.1%;

@@ -12,6 +12,7 @@ export interface IDeparture {
   departureTime: Date
   destination: string
   line: string
+  transport: string
 }
 
 export interface IEstimatedCalls {
@@ -22,6 +23,7 @@ export interface IEstimatedCalls {
   serviceJourney: {
     line: {
       publicCode: string
+      transportMode: string
     }
   }
 }

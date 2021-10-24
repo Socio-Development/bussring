@@ -13,6 +13,7 @@ export async function getApiData(stopPlaceId: number, resultLimit?: number) {
         serviceJourney {
           line {
             publicCode
+            transportMode
           }
         }
       }
@@ -39,7 +40,8 @@ export function getDepartureList({ data }: IApiData) {
     departureList.push({
       departureTime: new Date(departure.expectedDepartureTime),
       destination: departure.destinationDisplay.frontText,
-      line: departure.serviceJourney.line.publicCode
+      line: departure.serviceJourney.line.publicCode,
+      transport: departure.serviceJourney.line.transportMode
     })
   })
   return departureList
