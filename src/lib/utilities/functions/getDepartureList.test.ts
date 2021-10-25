@@ -98,7 +98,35 @@ test('Is able to retrieve departure list', () => {
   }
 
   const departureList: IDeparture[] = getDepartureList(apiCallData)
+
+  /**
+   * Test number of returned objects
+   */
   expect(
     departureList.length
   ).toBe(7)
+
+  /**
+   * Test departureTime property
+   */
+  expect(
+    departureList[6].departureTime.toString()
+  ).toBe('Mon Oct 25 2021 15:15:00 GMT+0200 (Central European Summer Time)')
+
+  /**
+   * Test destination property
+   */
+  expect(
+    departureList[5].destination
+  ).toBe("Tromsø lufthavn")
+
+  /**
+   * Test line property
+   */
+  expect(
+    departureList[4].line
+  ).toBe("FB92")
+  expect(
+    departureList[6].line
+  ).toBe("FB92S")
 })
