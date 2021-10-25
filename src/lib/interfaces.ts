@@ -1,40 +1,12 @@
-export interface IApiData {
-  data: {
-    stopPlace: {
-      name: string
-      id: string
-      estimatedCalls: IEstimatedCalls[]
-    }
-  }
-}
+/**
+ * @file Collects and exports all TS-interfaces
+ * @author Casper Tollefsen <casper.tollefsen@mobit.no>
+ */
 
-export interface IDeparture {
-  departureTime: Date
-  destination: string
-  line: string
-  transport: string
-}
-
-export interface IEstimatedCalls {
-  expectedDepartureTime: string
-  destinationDisplay: {
-    frontText: string
-  }
-  serviceJourney: {
-    line: {
-      publicCode: string
-      transportMode: string
-    }
-  }
-}
-
-export interface IStopPlace {
-  name: string
-  id: string
-  estimatedCalls: IEstimatedCalls[]
-}
-
-export interface ITableData {
-  headings: string[],
-  body: IDeparture[]
-}
+export type {
+  IApiData,
+  IDeparture,
+  IEstimatedCalls,
+  IStopPlace,
+  ITableData
+} from './types/interfaces'
