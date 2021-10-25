@@ -2,6 +2,7 @@
 *.rest
 /.svelte-kit
 /build
+/coverage
 /package
 node_modules
 package-lock.json
