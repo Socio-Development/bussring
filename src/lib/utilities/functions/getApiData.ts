@@ -28,11 +28,11 @@ async function getApiData(stopPlaceId: number, resultLimit?: number) {
     }
   }`
 
-  return await fetch('https://api.entur.io/journey-planner/v2/graphql', {
+  const getData = () => fetch('https://api.entur.io/journey-planner/v2/graphql', {
     method: 'POST',
     headers: {
-        'ET-Client-Name': 'bussring-digital_signage',
-        'Content-Type': 'application/json'
+      'ET-Client-Name': 'bussring-digital_signage',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({ query }),
   })
@@ -40,6 +40,8 @@ async function getApiData(stopPlaceId: number, resultLimit?: number) {
     .then(stopPlaceData => {
       return stopPlaceData
     })
+  
+  return getData()
 }
 
 export default getApiData

@@ -1,5 +1,5 @@
 import type { IApiData, IDeparture } from '$lib/interfaces'
-import getDepartureList from './getDepartureList'
+import getDepartureList from '../getDepartureList'
 
 test('Is able to retrieve departure list', () => {
   const apiCallData: IApiData = {

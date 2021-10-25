@@ -1,5 +1,5 @@
 import type { IApiData } from '$lib/interfaces'
-import getLocationName from './getLocationName'
+import getLocationName from '../getLocationName'
 
 test('Is able to retrieve StopPlace name', () => {
   const apiCallData: IApiData = {
