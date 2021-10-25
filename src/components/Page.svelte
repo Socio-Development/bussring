@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { IDeparture } from '../types/interfaces'
+  import type { IDeparture } from '$lib/interfaces'
   import Table from './Table.svelte'
 
   export let departureList: IDeparture[]

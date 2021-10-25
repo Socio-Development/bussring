@@ -18,7 +18,11 @@
 </script>
 
 <script lang="ts">
-  import { getApiData, getDepartureList, getLocationName } from '../../utils'
+  import {
+    getApiData,
+    getDepartureList,
+    getLocationName
+  } from '$lib/functions'
   import Page from '../../components/Page.svelte'
 
   /**

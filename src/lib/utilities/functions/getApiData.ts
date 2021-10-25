@@ -1,6 +1,14 @@
-import type { IApiData, IDeparture } from './types/interfaces'
-
-export async function getApiData(stopPlaceId: number, resultLimit?: number) {
+/**
+ * Uses its built-in query to fetch data from the Entur API.
+ * 
+ * @author Casper Tollefsen <casper.tollefsen@mobit.no>
+ * @version 0.0.1
+ * @param stopPlaceId The NSR:StopPlace:<ID>
+ * @param resultLimit The number of departures to fetch
+ * @returns An object containing all data fetched from the API
+ * @since 0.0.1
+ */
+async function getApiData(stopPlaceId: number, resultLimit?: number) {
   const query = `{
     stopPlace(id: "NSR:StopPlace:${ stopPlaceId }") {
       name
@@ -34,19 +42,4 @@ export async function getApiData(stopPlaceId: number, resultLimit?: number) {
     })
 }
 
-export function getDepartureList({ data }: IApiData) {
-  let departureList: IDeparture[] = []
-  data.stopPlace.estimatedCalls.forEach((departure) => {
-    departureList.push({
-      departureTime: new Date(departure.expectedDepartureTime),
-      destination: departure.destinationDisplay.frontText,
-      line: departure.serviceJourney.line.publicCode,
-      transport: departure.serviceJourney.line.transportMode
-    })
-  })
-  return departureList
-}
-
-export function getLocationName({ data }: IApiData) {
-  return data.stopPlace.name
-}
+export default getApiData
