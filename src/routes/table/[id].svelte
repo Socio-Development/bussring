@@ -72,7 +72,7 @@
       {showLocationName}
     />
   {/await}
-  <p class="credit">Created by <a href="https://ttcom.no/">TTCOM AS</a> | v1.0.0-alpha.1</p>
+  <p class="credit">Created by <a href="https://ttcom.no/">TTCOM AS</a> | v1.0.0-alpha.2</p>
 </div>
 
 <style>
