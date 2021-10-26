@@ -10,12 +10,12 @@
 
 <style>
   .Layout {
-    background: slategray;
     display: flex;
     flex-direction: column;
     height: 100vh;
   }
   .credit {
+    background: slategray;
     display: flex;
     flex-direction: row;
     font-size: .8rem;
