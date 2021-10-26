@@ -4,7 +4,7 @@
   <p>Click one of the following locations to display its bus departures:</p>
   <ul>
     <li><a href="/table/52806">Scandic Ishavshotel</a></li>
-    <li><a href="/table/52281">Trosmø Lufthavn</a></li>
+    <li><a href="/table/52281">Tromsø Lufthavn</a></li>
   </ul>
 </div>
 
