@@ -10,8 +10,20 @@
 
 <style>
   .container {
-    color: #000;
+    color: #fff;
     margin: 0 auto;
     max-width: 800px;
+  }
+  p {
+    max-width: 100ch;
+  }
+  li {
+    line-height: 2;
+    list-style: none;
+  }
+  a {
+    color: inherit;
+    font-size: 1.2rem;
+    font-weight: 600;
   }
 </style>

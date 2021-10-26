@@ -2,8 +2,11 @@
 
 ## v1.0.0-alpha.2
 
-- Updated documentation.
-- Added a changelog to keep track of changes.
+- Adds proper styling to the landing page.
+- Adds a Svelte layout that applies to all routes.
+- Improves the look of the credits footer.
+- Updates the GitHub documentation.
+- Adds a changelog to keep track of changes.
 
 
 ## v1.0.0-alpha.1

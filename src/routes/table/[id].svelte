@@ -72,7 +72,6 @@
       {showLocationName}
     />
   {/await}
-  <p class="credit">Created by <a href="https://ttcom.no/">TTCOM AS</a> | v1.0.0-alpha.2</p>
 </div>
 
 <style>
@@ -83,19 +82,6 @@
     height: 100vh;
     overflow-y: scroll;
     padding: 2rem;
-  }
-  .credit {
-    font-size: .8rem;
-    margin-top: auto;
-    text-align: end;
-    width: 100%;
-  }
-  a {
-    color: var(--color);
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
   }
   @media (max-width: 650px) {
     .container {
