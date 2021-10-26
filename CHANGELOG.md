@@ -2,6 +2,7 @@
 
 ## v1.0.0-alpha.2
 
+- Updated documentation.
 - Added a changelog to keep track of changes.
 
 
