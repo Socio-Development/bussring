@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.0.0-alpha.4
+
+
 ## v1.0.0-alpha.3
 
 - Fixed bug that set the scrollbar to always visible.
