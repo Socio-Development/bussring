@@ -2,6 +2,7 @@
 
 ## v1.0.0-alpha.3
 
+- Fixed bug that set the scrollbar to always visible.
 - Fixed bug that prevented icons to be center aligned on smaller screens.
 
 

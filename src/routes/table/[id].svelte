@@ -76,12 +76,17 @@
 
 <style>
   .container {
+    -ms-overflow-style: none;
     color: var(--color);
     display: flex;
     flex-direction: column;
     height: 100vh;
     overflow-y: scroll;
     padding: 2rem;
+    scrollbar-width: none;
+  }
+  .container::-webkit-scrollbar {
+    display: none;
   }
   @media (max-width: 650px) {
     .container {
