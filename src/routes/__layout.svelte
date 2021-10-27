@@ -2,7 +2,7 @@
   <slot />
 
   <div class="credit">
-    <p>Work in progress | v1.0.0-alpha.2</p>
+    <p>Work in progress | v1.0.0-alpha.3</p>
     <p>Created by <a href="https://ttcom.no/">Mobit Stakkevollvegen</a></p>
   </div>
 </div>
@@ -10,12 +10,12 @@
 
 <style>
   .Layout {
-    background: slategray;
     display: flex;
     flex-direction: column;
     height: 100vh;
   }
   .credit {
+    background: slategray;
     display: flex;
     flex-direction: row;
     font-size: .8rem;
