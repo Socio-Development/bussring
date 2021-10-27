@@ -4,6 +4,8 @@
 
 - Fixed bug that set the scrollbar to always visible.
 - Fixed bug that prevented icons to be center aligned on smaller screens.
+- Properly implemented the transparent background feature.
+- Fixed grammar mistake on the landing page.
 
 
 ## v1.0.0-alpha.2
