@@ -153,9 +153,11 @@
     width: 0.1%;
   }
   td:nth-child(3) {
-    align-items: center;
-    display: flex;
-    justify-content: center;
+    height: inherit;
+    padding: auto 0;
+  }
+  svg {
+    margin: 0 auto;
   }
   @media (max-width: 650px) {
     th {

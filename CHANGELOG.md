@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v1.0.0-alpha.3
+
+- Fixed bug that prevented icons to be center aligned on smaller screens.
+
+
 ## v1.0.0-alpha.2
 
 - Adds proper styling to the landing page.
