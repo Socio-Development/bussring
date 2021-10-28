@@ -6,3 +6,4 @@
 export { default as getApiData } from './utilities/functions/getApiData'
 export { default as getDepartureList } from './utilities/functions/getDepartureList'
 export { default as getLocationName } from './utilities/functions/getLocationName'
+export { default as minutesToDeparture } from './utilities/functions/minutesToDeparture'

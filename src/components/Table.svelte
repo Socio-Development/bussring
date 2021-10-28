@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { minutesToDeparture } from '$lib/functions';
   import type { IDeparture } from '$lib/interfaces'
 
   /**
@@ -12,20 +13,11 @@
   export let departureList: IDeparture[]
 
   /**
-   * Get minutes to departure as a number
-   * @param time Date
-   */
-  function countdownMinutes(time: Date) {
-    const minutesLeft = (time.getTime() - Date.now()) / 60000
-    return Math.round(minutesLeft)
-  }
-
-  /**
    * Get time to departure as a string
    * @param time Date
    */
   function displayCountdown(time: Date) {
-    const minutes = countdownMinutes(time)
+    const minutes = minutesToDeparture(time)
 
     // Display "Leaving soon" notification
     if (minutes < 6) {
@@ -57,7 +49,7 @@
   <tbody>
     {#each departureList as departure}
       <!-- Display only if time to departure is positive -->
-      {#if countdownMinutes(departure.departureTime) > 0}
+      {#if minutesToDeparture(departure.departureTime) > 0}
         <tr>
           <td>{ departure.departureTime.toLocaleTimeString('nb-NO', { hour: '2-digit', minute: '2-digit' }) }</td>
           <td>{ departure.line }</td>
