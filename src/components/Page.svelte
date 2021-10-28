@@ -5,6 +5,7 @@ import Countdown from './Countdown.svelte'
 
   export let departureList: IDeparture[]
   export let locationName: string
+  export let showETD: string
   export let showLocationName: string
 </script>
 
@@ -21,9 +22,14 @@ import Countdown from './Countdown.svelte'
       </div>
     {/if}
   
-    <Table {departureList} />
+    <Table
+      {showETD}
+      {departureList}
+    />
   </div>
-  <Countdown eta={ departureList[0].departureTime } />
+  {#if showETD !== 'true'}
+    <Countdown eta={ departureList[0].departureTime } />
+  {/if}
 </div>
 
 <style>

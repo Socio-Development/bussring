@@ -11,6 +11,7 @@
         color: page.query.get('color'),
         id: page.params.id,
         limit: page.query.get('limit'),
+        showETD: page.query.get('showETD'),
         showLocationName: page.query.get('showLocationName')
       }
     }
@@ -52,6 +53,12 @@
    */
   export let limit: number
   /**
+   * Do you wish to display the estimated time of departure?
+   * @path /<id-number>?showETD=<boolean>
+   * @default true
+  */
+  export let showETD: string
+  /**
    * Do you wish to display the location name?
    * @path /<id-number>?showLocationName=<boolean>
    * @default true
@@ -69,6 +76,7 @@
     <Page
       departureList={ getDepartureList(jsonData) }
       locationName={ getLocationName(jsonData) }
+      {showETD}
       {showLocationName}
     />
   {/await}
