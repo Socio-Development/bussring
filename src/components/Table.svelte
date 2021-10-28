@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { minutesToDeparture } from '$lib/functions';
+  import { countdownMessage, minutesToDeparture } from '$lib/functions'
   import type { IDeparture } from '$lib/interfaces'
 
   /**
@@ -11,29 +11,6 @@
    */
 
   export let departureList: IDeparture[]
-
-  /**
-   * Get time to departure as a string
-   * @param time Date
-   */
-  function displayCountdown(time: Date) {
-    const minutes = minutesToDeparture(time)
-
-    // Display "Leaving soon" notification
-    if (minutes < 6) {
-      return 'Under 5 min'
-    }
-    // Exclude hours
-    if (minutes < 60) {
-      return minutes + ' min'
-    }
-    // Exclude days
-    if (minutes < 1440) {
-      const hours = Math.floor(minutes / 60)
-      return hours + ' t ' + (minutes % 60) + ' min'
-    }
-    return '24+ t'
-  }
 </script>
 
 <table>
@@ -106,7 +83,7 @@
             {/if}
           </td>
           <td>{ departure.destination }</td>
-          <td><strong>{ displayCountdown(departure.departureTime) }</strong></td>
+          <td><strong>{ countdownMessage(departure.departureTime) }</strong></td>
         </tr>
       {/if}
     {/each}
