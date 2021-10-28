@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { IDeparture } from '$lib/interfaces'
+import Countdown from './Countdown.svelte'
   import Table from './Table.svelte'
 
   export let departureList: IDeparture[]
@@ -11,16 +12,28 @@
   <title>{ locationName }</title>
 </svelte:head>
 
-<div>
-  {#if (showLocationName !== 'false')}
-    <h3>Holdeplass</h3>
-    <h1>{ locationName }</h1>
-  {/if}
-
-  <Table {departureList} />
+<div class="Page">
+  <div class="top">
+    {#if (showLocationName !== 'false')}
+      <div class="location-name">
+        <h3>Holdeplass</h3>
+        <h1>{ locationName }</h1>
+      </div>
+    {/if}
+  
+    <Table {departureList} />
+  </div>
+  <Countdown eta={ departureList[0].departureTime } />
 </div>
 
 <style>
+  .Page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    min-width: fit-content;
+  }
   h1 {
     font-size: 3.2rem;
     margin-top: 0;
