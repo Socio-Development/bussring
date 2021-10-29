@@ -31,21 +31,7 @@ function getApiData(stopPlaceId: number, resultLimit?: number) {
     }
   }`
 
-  let xhr = new XMLHttpRequest()
-  xhr.responseType = 'json'
-  xhr.open('POST', 'https://api.entur.io/journey-planner/v2/graphql', true)
-  xhr.setRequestHeader('ET-Client-Name', 'bussring-digital_signage')
-  xhr.setRequestHeader('Content-Type', 'application/json')
-  xhr.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      console.log(xhr.response)
-    }
-  }
-  xhr.send(JSON.stringify({ query }))
-
-  return xhr
-
-  /* const getData = () => fetch('https://api.entur.io/journey-planner/v2/graphql', {
+  const getData = () => fetch('https://api.entur.io/journey-planner/v2/graphql', {
     method: 'POST',
     headers: {
       'ET-Client-Name': 'bussring-digital_signage',
@@ -58,7 +44,7 @@ function getApiData(stopPlaceId: number, resultLimit?: number) {
       return stopPlaceData
     })
   
-  return getData() */
+  return getData()
 }
 
 export default getApiData
