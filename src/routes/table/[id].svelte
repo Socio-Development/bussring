@@ -19,13 +19,14 @@
 </script>
 
 <script lang="ts">
+  import XMLHttpRequest from 'xhr2'
   import {
     getApiData,
     getDepartureList,
     getLocationName
   } from '$lib/functions'
-  import type { IApiData } from '$lib/interfaces';
-  import { onMount } from 'svelte';
+  import type { IApiData } from '$lib/interfaces'
+  import { onMount } from 'svelte'
   import Page from '../../components/Page.svelte'
 
   /**
