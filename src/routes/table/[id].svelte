@@ -108,6 +108,9 @@ import { onMount } from 'svelte';
   class="container"
   style={ `background: ${background || '#8A2A2B'}; --color: ${ color || '#fff' };` }
 >
+  { JSON.stringify(data) }
+  <h2>DEBUG_MODE: true</h2>
+  
   {#if !data}
     <p>Loading...</p>
   {:else}
