@@ -105,17 +105,18 @@ import type { IApiData } from '$lib/interfaces';
   class="container"
   style={ `background: ${background || '#8A2A2B'}; --color: ${ color || '#fff' };` }
 >
-{ JSON.stringify(data) }
-  {#if Object.keys(data).length === 0}
-    <p>Laster inn data...</p>
-  {:else}
-    <Page
-      departureList={ getDepartureList(data) }
-      locationName={ getLocationName(data) }
-      {showETD}
-      {showLocationName}
-    />
-  {/if}
+<h1>readyState: { JSON.stringify(xhr.readyState) }<br>status: { JSON.stringify(xhr.status) }</h1>
+
+{#if Object.keys(data).length === 0}
+  <p>Laster inn data...</p>
+{:else}
+  <Page
+    departureList={ getDepartureList(data) }
+    locationName={ getLocationName(data) }
+    {showETD}
+    {showLocationName}
+  />
+{/if}
 </div>
 
 <style>
