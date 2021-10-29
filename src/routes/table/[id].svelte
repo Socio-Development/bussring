@@ -24,8 +24,8 @@
     getDepartureList,
     getLocationName
   } from '$lib/functions'
-import type { IApiData } from '$lib/interfaces';
-import { onMount } from 'svelte';
+  import type { IApiData } from '$lib/interfaces';
+  import { onMount } from 'svelte';
   import Page from '../../components/Page.svelte'
 
   /**
@@ -68,6 +68,7 @@ import { onMount } from 'svelte';
   export let showLocationName: string
 
   let data
+  let msg = 'did not fetch'
 
   onMount(async () => {
     const query = `{
@@ -97,9 +98,16 @@ import { onMount } from 'svelte';
       },
       body: JSON.stringify({ query }),
     })
-      .then(res => res.json())
+      .then(res => {
+        msg = 'did fetch, but no data returned'
+        return res.json()
+      })
       .then(stopPlaceData => {
+        msg = 'fetch successful'
         data = stopPlaceData
+      })
+      .catch((err) => {
+        msg = 'did fetch, but got error:\n' + err
       })
   })
 </script>
@@ -110,10 +118,12 @@ import { onMount } from 'svelte';
 >
   { JSON.stringify(data) }
   <h2>DEBUG_MODE: true</h2>
-  
+
   {#if !data}
+    <h3>status: { msg }</h3>
     <p>Loading...</p>
   {:else}
+    <h3>status: { msg }</h3>
     <Page
       departureList={ getDepartureList(data) }
       locationName={ getLocationName(data) }
