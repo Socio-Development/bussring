@@ -105,7 +105,7 @@ import type { IApiData } from '$lib/interfaces';
   class="container"
   style={ `background: ${background || '#8A2A2B'}; --color: ${ color || '#fff' };` }
 >
-
+<h2>DEBUG_MODE: true</h2>
 {#if Object.keys(data).length === 0}
   <h1>readyState: { JSON.stringify(xhr.readyState) }<br>status: { JSON.stringify(xhr.status) }</h1>
   <p>Laster inn data...</p>
