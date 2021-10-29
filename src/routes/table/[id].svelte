@@ -24,6 +24,8 @@
     getDepartureList,
     getLocationName
   } from '$lib/functions'
+import type { IApiData } from '$lib/interfaces';
+import { onMount } from 'svelte';
   import Page from '../../components/Page.svelte'
 
   /**
@@ -64,22 +66,58 @@
    * @default true
   */
   export let showLocationName: string
+
+  let data
+
+  onMount(async () => {
+    const query = `{
+      stopPlace(id: "NSR:StopPlace:52806") {
+        name
+        id
+        estimatedCalls(numberOfDepartures: 7) {
+          expectedDepartureTime
+          destinationDisplay {
+            frontText
+          }
+          serviceJourney {
+            line {
+              publicCode
+              transportMode
+            }
+          }
+        }
+      }
+    }`
+
+    await fetch('https://api.entur.io/journey-planner/v2/graphql', {
+      method: 'POST',
+      headers: {
+        'ET-Client-Name': 'bussring-digital_signage',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ query }),
+    })
+      .then(res => res.json())
+      .then(stopPlaceData => {
+        data = stopPlaceData
+      })
+  })
 </script>
 
 <div
   class="container"
   style={ `background: ${background || '#8A2A2B'}; --color: ${ color || '#fff' };` }
 >
-  {#await getApiData(id, limit || 7)}
+  {#if !data}
     <p>Loading...</p>
-  {:then jsonData}
+  {:else}
     <Page
-      departureList={ getDepartureList(jsonData) }
-      locationName={ getLocationName(jsonData) }
+      departureList={ getDepartureList(data) }
+      locationName={ getLocationName(data) }
       {showETD}
       {showLocationName}
     />
-  {/await}
+  {/if}
 </div>
 
 <style>
