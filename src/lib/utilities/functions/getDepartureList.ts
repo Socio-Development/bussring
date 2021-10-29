@@ -13,9 +13,9 @@ import type {
  * @returns [{departureTime, destination, line, transport}]
  * @since 0.0.1
  */
-export default function getDepartureList({ data }: IApiData) {
+export default function getDepartureList(data: IApiData) {
   let departureList: IDeparture[] = []
-  data.stopPlace.estimatedCalls.forEach((departure) => {
+  data.data.stopPlace.estimatedCalls.forEach((departure) => {
     departureList.push({
       departureTime: new Date(departure.expectedDepartureTime),
       destination: departure.destinationDisplay.frontText,
