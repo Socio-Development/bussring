@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v1.0.0-alpha.4
+
+### Focus
+
+Implement features requested by the client/custormer.
+
+### Changes
+
+- Implemented a new table display mode.
+- Implemented a large departure time countdown at the bottom of the screen.
+
 ## v1.0.0-alpha.3
 
 - Fixed bug that set the scrollbar to always visible.

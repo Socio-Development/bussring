@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { countdownMessage, minutesToDeparture } from '$lib/functions'
   import type { IDeparture } from '$lib/interfaces'
 
   /**
@@ -10,58 +11,35 @@
    */
 
   export let departureList: IDeparture[]
-
-  /**
-   * Get minutes to departure as a number
-   * @param time Date
-   */
-  function countdownMinutes(time: Date) {
-    const minutesLeft = (time.getTime() - Date.now()) / 60000
-    return Math.round(minutesLeft)
-  }
-
-  /**
-   * Get time to departure as a string
-   * @param time Date
-   */
-  function displayCountdown(time: Date) {
-    const minutes = countdownMinutes(time)
-
-    // Display "Leaving soon" notification
-    if (minutes < 6) {
-      return 'Under 5 min'
-    }
-    // Exclude hours
-    if (minutes < 60) {
-      return minutes + ' min'
-    }
-    // Exclude days
-    if (minutes < 1440) {
-      const hours = Math.floor(minutes / 60)
-      return hours + ' t ' + (minutes % 60) + ' min'
-    }
-    return '24+ t'
-  }
+  export let showETD: string
 </script>
 
 <table>
   <thead>
     <tr>
-      <th>Avgang</th>
-      <th>Rute</th>
+      {#if showETD === 'true'}
+        <th class="shrink center">Avgang</th>
+      {/if}
+      <th class="shrink">Rute</th>
       <th></th>
       <th>Destinasjon</th>
-      <th>Går om</th>
+      {#if showETD === 'true'}
+        <th>Går om</th>
+      {:else}
+        <th class="center">Avgang</th>
+      {/if}
     </tr>
   </thead>
   <tbody>
     {#each departureList as departure}
       <!-- Display only if time to departure is positive -->
-      {#if countdownMinutes(departure.departureTime) > 0}
+      {#if minutesToDeparture(departure.departureTime) > 0}
         <tr>
-          <td>{ departure.departureTime.toLocaleTimeString('nb-NO', { hour: '2-digit', minute: '2-digit' }) }</td>
-          <td>{ departure.line }</td>
-          <td>
+          {#if showETD === 'true'}
+            <td class="shrink center">{ departure.departureTime.toLocaleTimeString('nb-NO', { hour: '2-digit', minute: '2-digit' }) }</td>
+          {/if}
+          <td class="shrink">{ departure.line }</td>
+          <td class="center">
             {#if departure.transport === 'air'}
               Fly
             {:else if departure.transport === 'bus'}
@@ -114,7 +92,11 @@
             {/if}
           </td>
           <td>{ departure.destination }</td>
-          <td><strong>{ displayCountdown(departure.departureTime) }</strong></td>
+          {#if showETD === 'true'}
+            <td>{ countdownMessage(departure.departureTime) }</td>
+          {:else}
+            <td class="center">{ departure.departureTime.toLocaleTimeString('nb-NO', { hour: '2-digit', minute: '2-digit' }) }</td>
+          {/if}
         </tr>
       {/if}
     {/each}
@@ -138,17 +120,12 @@
   th {
     padding: .6rem 1rem;
   }
-  td:first-child,
-  th:first-child,
-  th:nth-child(2),
-  td:nth-child(2) {
+  td.center,
+  th.center {
     text-align: center;
-    white-space: nowrap;
-    width: 0.1%;
   }
-  td:last-child,
-  th:last-child,
-  th:nth-child(3) {
+  td.shrink,
+  th.shrink {
     white-space: nowrap;
     width: 0.1%;
   }

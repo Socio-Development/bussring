@@ -11,6 +11,7 @@
         color: page.query.get('color'),
         id: page.params.id,
         limit: page.query.get('limit'),
+        showETD: page.query.get('showETD'),
         showLocationName: page.query.get('showLocationName')
       }
     }
@@ -18,11 +19,14 @@
 </script>
 
 <script lang="ts">
+  import XMLHttpRequest from 'xhr2'
   import {
     getApiData,
     getDepartureList,
     getLocationName
   } from '$lib/functions'
+  import type { IApiData } from '$lib/interfaces'
+  import { onMount } from 'svelte'
   import Page from '../../components/Page.svelte'
 
   /**
@@ -52,26 +56,82 @@
    */
   export let limit: number
   /**
+   * Do you wish to display the estimated time of departure?
+   * @path /<id-number>?showETD=<boolean>
+   * @default true
+  */
+  export let showETD: string
+  /**
    * Do you wish to display the location name?
    * @path /<id-number>?showLocationName=<boolean>
    * @default true
   */
   export let showLocationName: string
+
+  let data
+  let msg = 'did not fetch'
+
+  onMount(async () => {
+    const query = `{
+      stopPlace(id: "NSR:StopPlace:52806") {
+        name
+        id
+        estimatedCalls(numberOfDepartures: 7) {
+          expectedDepartureTime
+          destinationDisplay {
+            frontText
+          }
+          serviceJourney {
+            line {
+              publicCode
+              transportMode
+            }
+          }
+        }
+      }
+    }`
+
+    await fetch('https://api.entur.io/journey-planner/v2/graphql', {
+      method: 'POST',
+      headers: {
+        'ET-Client-Name': 'bussring-digital_signage',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ query }),
+    })
+      .then(res => {
+        msg = 'did fetch, but no data returned'
+        return res.json()
+      })
+      .then(stopPlaceData => {
+        msg = 'fetch successful'
+        data = stopPlaceData
+      })
+      .catch((err) => {
+        msg = 'did fetch, but got error:\n' + err
+      })
+  })
 </script>
 
 <div
   class="container"
   style={ `background: ${background || '#8A2A2B'}; --color: ${ color || '#fff' };` }
 >
-  {#await getApiData(id, limit || 7)}
+  { JSON.stringify(data) }
+  <h2>DEBUG_MODE: true</h2>
+
+  {#if !data}
+    <h3>status: { msg }</h3>
     <p>Loading...</p>
-  {:then jsonData}
+  {:else}
+    <h3>status: { msg }</h3>
     <Page
-      departureList={ getDepartureList(jsonData) }
-      locationName={ getLocationName(jsonData) }
+      departureList={ getDepartureList(data) }
+      locationName={ getLocationName(data) }
+      {showETD}
       {showLocationName}
     />
-  {/await}
+  {/if}
 </div>
 
 <style>

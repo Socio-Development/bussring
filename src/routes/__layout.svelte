@@ -2,7 +2,7 @@
   <slot />
 
   <div class="credit">
-    <p>Work in progress | v1.0.0-alpha.3</p>
+    <p>Work in progress | v1.0.0-alpha.4</p>
     <p>Created by <a href="https://ttcom.no/">Mobit Stakkevollvegen</a></p>
   </div>
 </div>

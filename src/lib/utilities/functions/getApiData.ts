@@ -1,14 +1,17 @@
+import type { IApiData } from '$lib/interfaces'
+import XMLHttpRequest from 'xhr2'
+
 /**
  * Uses its built-in query to fetch data from the Entur API.
  * 
  * @author Casper Tollefsen <casper.tollefsen@mobit.no>
- * @version 0.0.1
+ * @version 1.0.0-alpha.4
  * @param stopPlaceId The NSR:StopPlace:<ID>
  * @param resultLimit The number of departures to fetch
  * @returns An object containing all data fetched from the API
  * @since 0.0.1
  */
-async function getApiData(stopPlaceId: number, resultLimit?: number) {
+function getApiData(stopPlaceId: number, resultLimit?: number) {
   const query = `{
     stopPlace(id: "NSR:StopPlace:${ stopPlaceId }") {
       name

@@ -1,9 +1,11 @@
 <script lang="ts">
   import type { IDeparture } from '$lib/interfaces'
+import Countdown from './Countdown.svelte'
   import Table from './Table.svelte'
 
   export let departureList: IDeparture[]
   export let locationName: string
+  export let showETD: string
   export let showLocationName: string
 </script>
 
@@ -11,16 +13,33 @@
   <title>{ locationName }</title>
 </svelte:head>
 
-<div>
-  {#if (showLocationName !== 'false')}
-    <h3>Holdeplass</h3>
-    <h1>{ locationName }</h1>
+<div class="Page">
+  <div class="top">
+    {#if (showLocationName !== 'false')}
+      <div class="location-name">
+        <h3>Holdeplass</h3>
+        <h1>{ locationName }</h1>
+      </div>
+    {/if}
+  
+    <Table
+      {showETD}
+      {departureList}
+    />
+  </div>
+  {#if showETD !== 'true'}
+    <Countdown eta={ departureList[0].departureTime } />
   {/if}
-
-  <Table {departureList} />
 </div>
 
 <style>
+  .Page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    min-width: fit-content;
+  }
   h1 {
     font-size: 3.2rem;
     margin-top: 0;
